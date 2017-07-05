@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  
+<style>
+.jumbotron{
+    text-align: center;
+}
+
+lable, tr, td {
+   border: 1px solid black;
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+</style>
+
+
+<body>
+
+<div class ="container">
+  <div class="row"><h1 class="text-center">BMI List</h1></div>
+  
+    <div class="row">
+      <div class="form-group col-xs-offset-4 col-xs-4">
+        <input [(ngModel)]="weight"  placeholder="Add Weight(kl.)" class="form-control" required>
+      
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-xs-offset-4 col-xs-4">
+        <input [(ngModel)]="height"  placeholder="Add Height(m.)" class="form-control " required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-xs-offset-4 col-xs-4">
+        <button (click)="pushCal()" class="form-control btn btn-default">Submit</button>
+      </div>
+    </div>
+    
+  <div class="row">
+    <table class="table">
+      <tr>
+        <td align= "center">
+        weight
+        </td>
+          <td align= "center">
+        height
+        </td>
+          <td align= "center">
+        BMI
+        </td>
+          <td align= "center">
+        action
+        </td>
+      </tr>
+
+      <tr *ngFor="let w of weight_list;let ind = index">
+      <td align= "center">
+        {{w}}
+        </td>
+          <td align= "center">
+        {{height_list[ind]}}
+        </td>
+          <td align= "center">
+        {{bmi_list[ind]}}
+        </td>
+          <td align= "center">
+        <button (click)="removeItem(ind)">delete</button>
+        </td>
+      </tr>
+    </table>
+</div>
+  <div class="row text-center">
+    <h2>วิธีคำนวณดัชนีมวลกาย Body Mass Index (BMI)</h2>
+<h3>สูตรคำนวณดัชนีมวลกายคือ [ดัชนีมวลกาย= น้ำหนักตัว / ความสูง ยกกำลังสอง]</h3>
+<p>40 หรือมากกว่านี้ : โรคอ้วนขั้นสูงสุด</p>
+<p>35.0 - 39.9: โรคอ้วนระดับ2 คุณเสี่ยงต่อการเกิดโรคที่มากับความอ้วน หากคุณมีเส้นรอบเอวมากกว่าเกณฑ์ปกติคุณจะเสี่ยงต่อการเกิดโรคสูง คุณต้องควบคุมอาหาร และออกกำลังกายอย่างจริงจัง</p>
+<p>28.5 - 34.9: โรคอ้วนระดับ1 และหากคุณมีเส้นรอบเอวมากกว่า 90 ซม.(ชาย) 80 ซม.(หญิง) คุณจะมีโอกาศเกิดโรคความดัน เบาหวานสูง จำเป็นต้องควบคุมอาหาร และออกกำลังกาย</p>
+<p>23.5 - 28.4: น้ำหนักเกิน หากคุณมีกรรมพันธ์เป็นโรคเบาหวานหรือไขมันในเลือดสูงต้องพยายามลดน้ำหนักให้ดัชนีมวลกายต่ำกว่า 23</p>
+<p>18.5 - 23.4: น้ำหนักปกติ และมีปริมาณไขมันอยู่ในเกณฑ์ปกติ มักจะไม่ค่อยมีโรคร้าย อุบัติการณ์ของโรคเบาหวาน ความดันโลหิตสูงต่ำกว่าผู้ที่อ้วนกว่านี้</p>
+<p>น้อยกว่า 18.5: น้ำหนักน้อยเกินไป ซึ่งอาจจะเกิดจากนักกีฬาที่ออกกำลังกายมาก และได้รับสารอาหารไม่เพียงพอ วิธีแก้ไขต้องรับประทานอาหารที่มีคุณภาพ และมีปริมาณพลังงานเพียงพอ และออกกำลังกายอย่างเหมาะสม</p>
+  </div>
+</div>
+
+</body>
+</html>
